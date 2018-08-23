@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginService } from './services/login.service';
 import { ProcessHttprespService } from './services/process-httpresp.service';
 import { StoreService } from './services/store.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { StoreService } from './services/store.service';
     LoginService,
     ProcessHttprespService,
     StoreService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
