@@ -11,6 +11,10 @@ This project is an Angular 5 App that is created using the angular cli. It has f
 
 ## Steps to start the application via live-reload webpack dev server
 
+Note: These are the node and npm versions of my machine on which this App has been developed:
+Node - 8.11.3
+NPM - 5.6.0
+
 Please make sure to start the server before starting this Angular App. Steps for the same are in that repo's README. Please find it below.
 https://github.com/ninadvadujkar/TodoAppBackend
 
@@ -20,7 +24,7 @@ https://github.com/ninadvadujkar/TodoAppBackend
 $ git clone https://github.com/ninadvadujkar/TodoAppFrontEnd.git
 ```
 
-2. Install dependencies
+2. Install dependencies (will take some time as Angular has a lot fo dependencies)
 
 ```sh
 $ cd TodoAppFrontEnd && npm install
