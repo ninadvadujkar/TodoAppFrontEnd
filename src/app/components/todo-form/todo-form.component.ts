@@ -1,9 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 
 import { TodoService } from '../../services/todo.service';
-import { StoreService } from '../../services/store.service';
 
 @Component({
   selector: 'app-todo-form',
@@ -23,7 +21,7 @@ export class TodoFormComponent implements OnInit {
     },
   };
   todoCreateErrMsg: string;
-  constructor(private _fb: FormBuilder, private _todoService: TodoService, private _router: Router, private _storeService: StoreService) { }
+  constructor(private _fb: FormBuilder, private _todoService: TodoService) { }
 
   ngOnInit() {
     this.createForm();
@@ -59,7 +57,7 @@ export class TodoFormComponent implements OnInit {
     this.todoForm.reset({
       username: '',
       password: '',
-    });    
+    });
   }
 
   onAdd(): void {

@@ -2,5 +2,5 @@
 <div>
   <app-todo-form (onAddition)="updateTodos($event)"></app-todo-form>
   <hr />
-  <app-todo-list [todos]="todos"></app-todo-list>
+  <app-todo-list [todos]="todos" (onDelete)="updateTodos($event)"></app-todo-list>
 </div>
