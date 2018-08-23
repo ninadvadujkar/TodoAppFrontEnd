@@ -25,6 +25,13 @@ $ git clone https://github.com/ninadvadujkar/TodoAppFrontEnd.git
 ```sh
 $ cd TodoAppFrontEnd && npm install
 ```
+The above command might not run on Windows due to presence of '&&'.
+Execute the commands in two steps for Windows as follows:
+
+```sh
+$ cd TodoAppFrontEnd 
+$ npm install
+```
 
 3. Start the webpack dev server
 
