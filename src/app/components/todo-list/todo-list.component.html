@@ -3,16 +3,18 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>ID</th>
+        <th>#</th>
         <th>Todo</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>dummy</td>
-        <td>dummy</td>
-        <td>dummy</td>
+      <tr *ngFor="let todo of todos; let i = index;">
+        <td>{{i + 1}}</td>
+        <td>{{todo.message}}</td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="delete(todo.id)">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>
