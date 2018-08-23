@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +16,7 @@ export class LoginComponent implements OnInit {
     'username': '',
     'password': '',
   };
+  loginFailureErrMsg: string;
   validationMessages: any = {
     'username': {
       'required': 'User name is required',
@@ -27,7 +31,7 @@ export class LoginComponent implements OnInit {
   };
 
 
-  constructor(private _fb: FormBuilder) {
+  constructor(private _fb: FormBuilder, private _loginService: LoginService, private _router: Router) {
     this.createForm();
   }
 
@@ -61,6 +65,7 @@ export class LoginComponent implements OnInit {
   }
 
   resetForm(): void {
+    this.loginFailureErrMsg = '';
     this.loginForm.reset({
       username: '',
       password: '',
@@ -73,6 +78,22 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.get('password').value,
     };
     console.log('form', this.formData);
+    this._loginService.login(this.formData.username, this.formData.password)
+      .subscribe(
+        resp => {
+          console.log('Response', resp);
+          localStorage.setItem('username', this.formData.username);
+          localStorage.setItem('token', resp.data);
+          this.resetForm();
+          this._router.navigate(['/home']);
+        },
+        err => {
+          console.log('Err', err);
+          this.loginFailureErrMsg = 'Login Failed! Invalid Credentials. Please enter correct credentials';
+          alert(this.loginFailureErrMsg);
+          this.resetForm();
+        }
+      )
   }
 
 }
