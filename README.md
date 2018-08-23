@@ -11,6 +11,9 @@ This project is an Angular 5 App that is created using the angular cli. It has f
 
 ## Steps to start the application via live-reload webpack dev server
 
+Please make sure to start the server before starting this Angular App. Steps for the same are in that repo's README. Please find it below.
+https://github.com/ninadvadujkar/TodoAppBackend
+
 1. Clone this repository using below command
 
 ```sh
