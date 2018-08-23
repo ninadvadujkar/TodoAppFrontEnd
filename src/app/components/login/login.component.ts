@@ -95,7 +95,10 @@ export class LoginComponent implements OnInit {
         },
         err => {
           console.log('Login Error', err);
-          this.loginFailureErrMsg = 'Login Failed! Invalid Credentials. Please enter correct credentials';
+          // We send err in response. If there's an error because server is not up, then there's no 'err' in err.json() hence this check
+          if (!err.json().err) {
+            this.loginFailureErrMsg = 'Some problem with backend. Probably the server is not up. Please try again later';
+          } else this.loginFailureErrMsg = 'Login Failed! Invalid Credentials. Please enter correct credentials';
           alert(this.loginFailureErrMsg);
           this.resetForm();
         }

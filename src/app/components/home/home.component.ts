@@ -31,8 +31,12 @@ export class HomeComponent implements OnInit {
           // Token not provided OR Cannot verify token. Need to get a new one
           this.errorMessage = err.json().message;
           this.endSessionAndLogout();
+        } else if (!err.json().err) {
+          this.errorMessage = 'Some problem with backend. Probably the server is not up. Please try again later';
+          alert(this.errorMessage);
         } else {
           this.errorMessage = 'Failed to get todos';
+          alert(this.errorMessage);
         }
       }
     );
