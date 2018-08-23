@@ -1,5 +1,39 @@
 # TodoAppFrontEnd
 
+This project is an Angular 5 App that is created using the angular cli. It has features as follows:
+1. Login (due to absence of database, currently supports only one user)
+'admin' is the username as well as the password
+2. Add Todo
+3. Show Todos
+4. Delete Todos
+
+2, 3 and 4 above are under a route named /home which is protected. Also, since all the APIs are token based that handling has been added to the app. App will send the user back to login page if wrong/invalid/expired token sent.
+
+## Steps to start the application via live-reload webpack dev server
+
+1. Clone this repository using below command
+
+```sh
+$ git clone https://github.com/ninadvadujkar/TodoAppFrontEnd.git
+```
+
+2. Install dependencies
+
+```sh
+$ cd TodoAppFrontEnd && npm install
+```
+
+3. Start the webpack dev server
+
+``` sh
+$ npm start
+```
+
+After these steps the application will start and can be accessible on http://localhost:4200/
+
+P.S. I wanted to add atleast a couple of unit tests but I couldn't get much time for it in the stipulated timeframe hence avoided it.
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 
 ## Development server
