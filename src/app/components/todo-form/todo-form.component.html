@@ -1,10 +1,14 @@
 <div class="container">
   <h2>Add Todo</h2>
-  <form>
+  <form novalidate [formGroup]="todoForm" (ngSubmit)="onAdd()">
     <div class="form-group">
       <label for="todo">Todo:</label>
-      <textarea class="form-control" rows="5" id="todo" name="todo"></textarea>
+      <textarea class="form-control" rows="3" id="todo" formControlName="todo" required></textarea>
+      <span [hidden]="!(formErrors.todo)" style="color: red"> 
+        * {{formErrors.todo}}
+      </span>
     </div>
-    <button type="submit" class="btn btn-primary">Create Todo</button>
+    <button type="submit" class="btn btn-primary" [disabled]="todoForm.invalid">Create Todo</button>
+    <button type="reset" class="btn btn-danger" (click)="resetForm()">Reset</button>
   </form>
 </div>
