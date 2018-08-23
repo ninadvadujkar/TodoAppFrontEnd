@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { TodoService } from '../../services/todo.service';
 
+/**
+ * @description Form that allows user to add a new todo
+ */
 @Component({
   selector: 'app-todo-form',
   templateUrl: './todo-form.component.html',

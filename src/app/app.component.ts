@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 
 import { StoreService } from './services/store.service';
 
+/**
+ * @description This is the top most parent component of the app.
+ */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

@@ -5,6 +5,9 @@ import { Response } from '@angular/http';
 
 import 'rxjs/add/observable/throw';
 
+/**
+ * @description This is a generic service in order to handle and process the http responses from all services.
+ */
 @Injectable()
 export class ProcessHttprespService {
 

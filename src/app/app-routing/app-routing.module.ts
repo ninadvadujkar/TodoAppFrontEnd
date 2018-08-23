@@ -7,6 +7,9 @@ import { HomeComponent } from '../components/home/home.component';
 
 import { AuthGuardService } from '../services/auth-guard.service';
 
+/**
+ * @description App routing module. Handles routing of all the angular routes in this app.
+ */
 @NgModule({
   imports: [
     CommonModule,

@@ -5,6 +5,9 @@ import { TodoService } from '../../services/todo.service';
 import { StoreService } from '../../services/store.service';
 import { Todo } from '../../models/todo';
 
+/**
+ * @description Component that gets rendered for the /home route. It sits behind an AuthGuard
+ */
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -16,6 +19,7 @@ export class HomeComponent implements OnInit {
   constructor(private _todoService: TodoService, private _router: Router, private _storeService: StoreService) { }
 
   ngOnInit() {
+    // Get todos
     this._todoService.getTodos()
     .subscribe(
       resp => {

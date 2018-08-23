@@ -11,6 +11,9 @@ const baseURL = environment.apiBaseUrl;
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+/**
+ * @description Currently just has a login method that calls the /login API.
+ */
 @Injectable()
 export class LoginService {
 

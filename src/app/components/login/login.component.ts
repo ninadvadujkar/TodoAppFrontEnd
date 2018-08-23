@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { StoreService } from '../../services/store.service';
 
+/**
+ * @description Component for the login route. Allows user to log into the app.
+ */
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -39,6 +42,9 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * @description creates reactive form group. Also subscribe to the value changes. Done in order to trigger the validation messages,
+   */
   createForm(): void {
     this.loginForm = this._fb.group({
       username: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],

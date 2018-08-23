@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
+/**
+ * @description This is a shared service that can be subscribed to. It always returns the latest data.
+ */
 @Injectable()
 export class StoreService {
   private sharedData = new BehaviorSubject<any>({

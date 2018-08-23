@@ -12,6 +12,9 @@ const baseURL = environment.apiBaseUrl;
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+/**
+ * @description Todo Service. Has methods that call APIs related to /api/todo 
+ */
 @Injectable()
 export class TodoService {
 

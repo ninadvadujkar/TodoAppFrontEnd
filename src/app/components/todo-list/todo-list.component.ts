@@ -3,6 +3,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../../models/todo';
 import { TodoService } from '../../services/todo.service';
 
+/**
+ * @description Component that renders a list of todos. User can delete todos one at a time.
+ */
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
