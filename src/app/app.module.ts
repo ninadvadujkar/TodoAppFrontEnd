@@ -26,10 +26,10 @@ import { ProcessHttprespService } from './services/process-httpresp.service';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    ProcessHttprespService
   ],
   providers: [
     LoginService,
+    ProcessHttprespService,
   ],
   bootstrap: [AppComponent]
 })
