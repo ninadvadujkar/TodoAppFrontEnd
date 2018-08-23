@@ -14,13 +14,17 @@ import { LoginService } from './services/login.service';
 import { ProcessHttprespService } from './services/process-httpresp.service';
 import { StoreService } from './services/store.service';
 import { AuthGuardService } from './services/auth-guard.service';
+import { TodoFormComponent } from './components/todo-form/todo-form.component';
+import { TodoListComponent } from './components/todo-list/todo-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    TodoFormComponent,
+    TodoListComponent
   ],
   imports: [
     BrowserModule,
