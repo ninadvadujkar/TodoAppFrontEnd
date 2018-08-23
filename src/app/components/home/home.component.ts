@@ -29,16 +29,25 @@ export class HomeComponent implements OnInit {
         } else if (err.status === 401) {
           // Cannot verify token. Need to get a new one
           this.errorMessage = err.json().message;
-          alert('Cannot verify token. Application will navigate you to login page. Please login again!');
-          localStorage.removeItem('username');
-          localStorage.removeItem('token');
-          this._storeService.updateSharedData(false);          
-          this._router.navigate(['/login']);
+          this.endSessionAndLogout();
         } else {
           this.errorMessage = 'Failed to get todos';
         }
       }
     );
+  }
+
+  endSessionAndLogout() {
+    alert('Cannot verify token. Application will navigate you to login page. Please login again!');
+    localStorage.removeItem('username');
+    localStorage.removeItem('token');
+    this._storeService.updateSharedData(false);
+    this._router.navigate(['/login']);
+  }
+
+  updateTodos({todos, error}) {
+    if (error) this.endSessionAndLogout();
+    else this.todos = todos;
   }
 
 }

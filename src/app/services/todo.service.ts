@@ -30,4 +30,17 @@ export class TodoService {
       });    
   }
 
+  createTodo(payload): Observable<ApiResp> {
+    const url = baseURL + 'todo';
+    const headers = new Headers();
+    headers.append('x-access-token', localStorage.getItem('token'));
+    return this._http.post(url , payload, { headers })
+      .map(res => {
+        return this._processHttpRespService.extractData(res);
+      })
+      .catch(error => {
+        return this._processHttpRespService.handleError(error);
+      });
+  }
+
 }

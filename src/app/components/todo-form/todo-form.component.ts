@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { TodoService } from '../../services/todo.service';
+import { StoreService } from '../../services/store.service';
 
 @Component({
   selector: 'app-todo-form',
@@ -7,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./todo-form.component.scss']
 })
 export class TodoFormComponent implements OnInit {
+  @Output() onAddition = new EventEmitter();
   todoForm: FormGroup;
   formData: any;
   formErrors: any = {
@@ -18,7 +23,7 @@ export class TodoFormComponent implements OnInit {
     },
   };
   todoCreateErrMsg: string;
-  constructor(private _fb: FormBuilder) { }
+  constructor(private _fb: FormBuilder, private _todoService: TodoService, private _router: Router, private _storeService: StoreService) { }
 
   ngOnInit() {
     this.createForm();
@@ -58,7 +63,30 @@ export class TodoFormComponent implements OnInit {
   }
 
   onAdd(): void {
-    console.log(this.todoForm.get('todo').value);
+    this.formData = {
+      message: this.todoForm.get('todo').value,
+    };
+    this._todoService.createTodo(this.formData)
+      .subscribe(
+        resp => {
+          this.onAddition.emit({todos: resp.data});
+          this.resetForm();
+        },
+        err => {
+          console.log('Failed to create todo');
+          if (err.status === 403) {
+            // Token not provided!
+            this.todoCreateErrMsg = err.json().message;
+          } else if (err.status === 401) {
+            // Cannot verify token. Need to get a new one
+            this.todoCreateErrMsg = err.json().message;
+            this.onAddition.emit({error: err});
+          } else {          
+            this.todoCreateErrMsg = 'Failed to create todo. Try again!'
+            alert(this.todoCreateErrMsg);
+          }
+        }
+      );
   }
 
 }
