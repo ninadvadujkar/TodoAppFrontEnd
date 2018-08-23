@@ -27,11 +27,8 @@ export class HomeComponent implements OnInit {
       },
       err => {
         console.log('error in getting todos', err);
-        if (err.status === 403) {
-          // Token not provided!
-          this.errorMessage = err.json().message;
-        } else if (err.status === 401) {
-          // Cannot verify token. Need to get a new one
+        if (err.status === 403 || err.status === 401) {
+          // Token not provided OR Cannot verify token. Need to get a new one
           this.errorMessage = err.json().message;
           this.endSessionAndLogout();
         } else {

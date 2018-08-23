@@ -28,14 +28,11 @@ export class TodoListComponent implements OnInit {
         },
         err => {
           console.log('Failed to delete todo', err);
-          if (err.status === 403) {
-            // Token not provided!
-            this.todoDeleteErrMsg = err.json().message;
-          } else if (err.status === 401) {
-            // Cannot verify token. Need to get a new one
+          if (err.status === 403 || err.status === 401) {
+            // Token not provided! OR Cannot verify token. Need to get a new one
             this.todoDeleteErrMsg = err.json().message;
             this.onDelete.emit({error: err});
-          } else if (err.status === 404) {
+          }else if (err.status === 404) {
             this.todoDeleteErrMsg = err.json().message;
           } else {       
             this.todoDeleteErrMsg = 'Failed to create todo. Try again!'

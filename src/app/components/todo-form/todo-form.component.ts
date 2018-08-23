@@ -75,11 +75,8 @@ export class TodoFormComponent implements OnInit {
         },
         err => {
           console.log('Failed to create todo', err);
-          if (err.status === 403) {
-            // Token not provided!
-            this.todoCreateErrMsg = err.json().message;
-          } else if (err.status === 401) {
-            // Cannot verify token. Need to get a new one
+          if (err.status === 403 || err.status === 401) {
+            // Token not provided! OR Cannot verify token. Need to get a new one
             this.todoCreateErrMsg = err.json().message;
             this.onAddition.emit({error: err});
           } else {          
