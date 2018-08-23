@@ -84,11 +84,9 @@ export class LoginComponent implements OnInit {
       username: this.loginForm.get('username').value,
       password: this.loginForm.get('password').value,
     };
-    console.log('form', this.formData);
     this._loginService.login(this.formData.username, this.formData.password)
       .subscribe(
         resp => {
-          console.log('Response', resp);
           localStorage.setItem('username', this.formData.username);
           localStorage.setItem('token', resp.data);
           this._storeService.updateSharedData(true);
@@ -96,7 +94,7 @@ export class LoginComponent implements OnInit {
           this._router.navigate(['/home']);
         },
         err => {
-          console.log('Err', err);
+          console.log('Login Error', err);
           this.loginFailureErrMsg = 'Login Failed! Invalid Credentials. Please enter correct credentials';
           alert(this.loginFailureErrMsg);
           this.resetForm();

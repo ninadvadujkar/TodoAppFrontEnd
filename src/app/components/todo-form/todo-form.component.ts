@@ -74,7 +74,7 @@ export class TodoFormComponent implements OnInit {
           this.resetForm();
         },
         err => {
-          console.log('Failed to create todo');
+          console.log('Failed to create todo', err);
           if (err.status === 403) {
             // Token not provided!
             this.todoCreateErrMsg = err.json().message;

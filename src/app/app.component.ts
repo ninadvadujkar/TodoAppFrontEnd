@@ -20,7 +20,6 @@ export class AppComponent {
 
   ngOnInit() {
     this.subscription = this._storeService.currentData.subscribe(data => {
-      console.log(data);
       this.userLoggedIn = data.userLoggedIn;
     });
   }

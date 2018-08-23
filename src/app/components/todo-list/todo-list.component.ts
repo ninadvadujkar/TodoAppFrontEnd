@@ -27,7 +27,7 @@ export class TodoListComponent implements OnInit {
           this.onDelete.emit({todos: resp.data});
         },
         err => {
-          console.log('Failed to delete todo');
+          console.log('Failed to delete todo', err);
           if (err.status === 403) {
             // Token not provided!
             this.todoDeleteErrMsg = err.json().message;
