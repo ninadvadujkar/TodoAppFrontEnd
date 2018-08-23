@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { LoginService } from '../../services/login.service';
+import { StoreService } from '../../services/store.service';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +32,7 @@ export class LoginComponent implements OnInit {
   };
 
 
-  constructor(private _fb: FormBuilder, private _loginService: LoginService, private _router: Router) {
+  constructor(private _fb: FormBuilder, private _loginService: LoginService, private _router: Router, private _storeService: StoreService) {
     this.createForm();
   }
 
@@ -84,6 +85,7 @@ export class LoginComponent implements OnInit {
           console.log('Response', resp);
           localStorage.setItem('username', this.formData.username);
           localStorage.setItem('token', resp.data);
+          this._storeService.updateSharedData(true);
           this.resetForm();
           this._router.navigate(['/home']);
         },

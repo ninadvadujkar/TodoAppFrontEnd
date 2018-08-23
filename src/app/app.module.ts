@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 
 import { LoginService } from './services/login.service';
 import { ProcessHttprespService } from './services/process-httpresp.service';
+import { StoreService } from './services/store.service';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { ProcessHttprespService } from './services/process-httpresp.service';
   providers: [
     LoginService,
     ProcessHttprespService,
+    StoreService,
   ],
   bootstrap: [AppComponent]
 })
