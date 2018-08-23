@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Http, Response } from '@angular/http';
+import { Http } from '@angular/http';
 
 import { environment } from '../../environments/environment';
 import { ApiResp } from '../models/apiResp';

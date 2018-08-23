@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class StoreService {
   private sharedData = new BehaviorSubject<any>({
-    userLoggedIn: localStorage.getItem('username') && localStorage.getItem('token');
+    userLoggedIn: localStorage.getItem('username') && localStorage.getItem('token') ? true : false,
   });
   currentData = this.sharedData.asObservable();
 
